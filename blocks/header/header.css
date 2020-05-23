@@ -5,3 +5,9 @@
   max-width: 882px;
   margin: 45px auto 0;
 }
+
+@media (max-width: 920px) {
+  .header {
+    margin-top: 28px;
+  }
+}

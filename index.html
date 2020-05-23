@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
-    <title>Места России</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Места России</title>
 </head>
+
 <body class="root">
 
   <header class="header">
@@ -14,11 +16,82 @@
   </header>
 
   <section class="profile">
-
+    <div class="profile__info">
+      <img src="./images/avatar__image.jpg" alt="аватар пользователя" class="profile__avatar">
+      <div class="profile__block">
+        <div class="profile__name-area">
+          <p class="profile__name">Жак-Ив Кусто</p>
+          <button class="profile__edit-button"></button>
+        </div>
+        <p class="profile__job">Исследователь океана</p>
+      </div>
+    </div>
+    <button class="profile__add-button"></button>
   </section>
 
+  <section class="popup">
+    <form class="popup__container">
+      <p class="popup__title">Редактировать профиль</p>
+      <input type="text" class="popup__input-name" value="Жак-Ив Кусто">
+      <hr class="popup__line">
+      <input type="text" class="popup__input-job" value="Исследователь океана">
+      <hr class="popup__line">
+      <button type="submit" class="popup__submit-button">Сохранить</button>
+      <button class="popup__close-button"></button>
+    </form>
+  </section>
+
+  <ul class="elements">
+    <li class="elements__card">
+      <img src="./images/elem__photo_elbrus.png" alt="фото горы Эльбрус на горизонте" class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title">Гора Эльбрус</h2>
+        <img src="./images/heart.svg" alt="сердечко" class="elements__button">
+      </div>
+    </li>
+    <li class="elements__card">
+      <img src="./images/elem__photo_dombai.png" alt="заснеженный горный пик" class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title">Домбай</h2>
+        <img src="./images/heart.svg" alt="сердечко" class="elements__button">
+      </div>
+    </li>
+    <li class="elements__card">
+      <img src="./images/elem__photo_karachaevo.jpg" alt="заброшенное старинное строение в горах "
+        class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title">Карачаево - Ч...</h2>
+        <img src="./images/heart.svg" alt="сердечко" class="elements__button">
+      </div>
+    </li>
+    <li class="elements__card">
+      <img src="./images/elem__photo_dombai.png" alt="заснеженный горный пик" class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title">Домбай</h2>
+        <img src="./images/heart.svg" alt="сердечко" class="elements__button">
+      </div>
+    </li>
+    <li class="elements__card">
+      <img src="./images/elem__photo_karachaevo.jpg" alt="заброшенное старинное строение в горах "
+        class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title">Карачаево - Ч...</h2>
+        <img src="./images/heart.svg" alt="сердечко" class="elements__button">
+      </div>
+    </li>
+    <li class="elements__card">
+      <img src="./images/elem__photo_elbrus.png" alt="фото горы Эльбрус на горизонте" class="elements__image">
+      <div class="elements__info">
+        <h2 class="elements__title">Гора Эльбрус</h2>
+        <img src="./images/heart.svg" alt="сердечко" class="elements__button">
+      </div>
+    </li>
+  </ul>
+
   <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-<script src="./pages/index.js"></script>
+  <script src="./pages/index.js"></script>
 </body>
+
 </html>

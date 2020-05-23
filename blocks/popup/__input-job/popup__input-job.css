@@ -1,0 +1,14 @@
+.popup__input-job {
+  width: 358px;
+  margin: 30px 36px 0;
+  border: unset;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media (max-width: 570px) {
+  .popup__input-job {
+    width: 264px;
+    margin: 34px 9px 0;
+  }
+}

@@ -1,5 +1,5 @@
 .header__line {
   opacity: 0.7;
-  color: #545454;
   margin: 40px 0 0;
+  border: 1px solid #545454;
 }
