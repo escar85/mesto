@@ -4,6 +4,7 @@
   font-weight: normal;
   margin-top: 16px;
   max-width: 480px;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 600px) {
