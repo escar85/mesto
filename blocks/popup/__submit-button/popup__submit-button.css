@@ -6,6 +6,7 @@
   border-radius: 2px;
   border: unset;
   margin-top: 48px;
+  margin-bottom: 21px;
   margin-left: calc((100% - 358px) / 2);
   font-size: 18px;
   padding: 0;
@@ -20,6 +21,6 @@
 @media (max-width: 570px) {
   .popup__submit-button {
     width: 264px;
-    margin: 9px 9px 0;
+    margin: 16px 9px 17px;
   }
 }

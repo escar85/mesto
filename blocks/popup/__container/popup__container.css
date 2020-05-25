@@ -1,7 +1,6 @@
 .popup__container {
   position: fixed;
   width: 430px;
-  min-height: 330px;
   background: #fff;
   top: 195px;
   left: calc((100% - 430px) / 2);
@@ -12,7 +11,6 @@
 @media (max-width: 570px) {
   .popup__container {
     width: 282px;
-    min-height: 250px;
     left: calc((100% - 282px) / 2);
   }
 }
