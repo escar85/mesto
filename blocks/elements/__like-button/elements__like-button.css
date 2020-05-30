@@ -1,4 +1,4 @@
-.elements__button {
+.elements__like-button {
   width: 18px;
   height: 20px;
   background-image: url(../../../images/heart.svg);
@@ -10,8 +10,7 @@
   padding: 0;
 }
 
-.elements__button:hover {
+.elements__like-button:hover {
   transition: all 0.5s linear;
-  transform: scale(1.2);
-  opacity: 0.7;
+  opacity: 0.6;
 }

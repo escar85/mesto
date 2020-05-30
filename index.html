@@ -29,65 +29,98 @@
   </section>
 
   <ul class="elements">
-    <li class="elements__card">
+    <!-- <li class="elements__card">
       <img src="./images/elem__photo_elbrus.jpg" alt="фото горы Эльбрус на горизонте" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title">Гора Эльбрус</h2>
-        <button type="button" aria-label="like" class="elements__button"></button>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
       </div>
     </li>
     <li class="elements__card">
       <img src="./images/elem__photo_dombai.jpg" alt="заснеженный горный пик" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title">Домбай</h2>
-        <button type="button" aria-label="like" class="elements__button"></button>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
       </div>
     </li>
     <li class="elements__card">
-      <img src="./images/elem__photo_karachaevo.jpg" alt="заброшенное старинное строение в горах "
-        class="elements__image">
+      <img src="./images/elem__photo_karachaevo.jpg" alt="заброшенное старинное строение в горах" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title">Карачаево - Черкесия</h2>
-        <button type="button" aria-label="like" class="elements__button"></button>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
       </div>
     </li>
     <li class="elements__card">
       <img src="./images/elem__photo_dombai.jpg" alt="заснеженный горный пик" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title">Домбай</h2>
-        <button type="button" aria-label="like" class="elements__button"></button>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
       </div>
     </li>
     <li class="elements__card">
-      <img src="./images/elem__photo_karachaevo.jpg" alt="заброшенное старинное строение в горах "
-        class="elements__image">
+      <img src="./images/elem__photo_karachaevo.jpg" alt="заброшенное старинное строение в горах" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title">Карачаево - Черкесия</h2>
-        <button type="button" aria-label="like" class="elements__button"></button>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
       </div>
     </li>
     <li class="elements__card">
       <img src="./images/elem__photo_elbrus.jpg" alt="фото горы Эльбрус на горизонте" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title">Гора Эльбрус</h2>
-        <button type="button" aria-label="like" class="elements__button"></button>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
       </div>
-    </li>
+    </li> -->
   </ul>
 
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="popup">
-    <form name="profile-edit" method="post" action="#" class="popup__container">
+  <section class="popup" id="popupProfile">
+    <form name="profile-edit" method="post" action="#" class="popup__container" id="profileForm">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <input type="text" name="name-input" required class="popup__input popup__input_name" value="">
-      <input type="text" name="job-input" required class="popup__input popup__input_job" value="Исследователь океана">
+      <input type="text" name="profile-name-input" required class="popup__input" id="inputName">
+      <input type="text" name="job-input" required class="popup__input" id="inputJob">
       <button type="submit" class="popup__submit-button">Сохранить</button>
-      <button type="button" aria-label="close" class="popup__close-button"></button>
+      <button type="button" aria-label="close" class="popup__close-button profile-close-button"></button>
     </form>
   </section>
+
+  <section class="popup" id="popupAddCard">
+    <form name="add-card" method="post" action="#" class="popup__container" id="addCardForm">
+      <h3 class="popup__title">Новое место</h3>
+      <input type="text" name="card-name-input" placeholder="Название" value="" required class="popup__input" id="cardName">
+      <input type="text" name="image-link-input" placeholder="Ссылка на картинку" value="" required class="popup__input" id="linkPhoto">
+      <button type="submit" class="popup__submit-button">Создать</button>
+      <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
+    </form>
+  </section>
+
+  <figure class="popup popup__big-image" id="bigImage">
+    <div class="popup__image-box">
+      <img src="" alt="" class="popup__image">
+      <figcaption class="popup__image-caption"></figcaption>
+      <button type="button" aria-label="close" class="popup__close-button" id="bigImageCloseButton"></button>
+    </div>
+  </figure>
+
+  <template id="template">
+    <li class="elements__card">
+      <img src="" alt="" class="elements__image">
+      <button type="button" aria-label="delete" class="elements__delete-button"></button>
+      <div class="elements__info">
+        <h2 class="elements__title"></h2>
+        <button type="button" aria-label="like" class="elements__like-button"></button>
+      </div>
+    </li>
+  </template>
 
   <script src="./pages/index.js"></script>
 </body>

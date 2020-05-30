@@ -2,7 +2,9 @@
 @import url('./__image/elements__image.css');
 @import url('./__info/elements__info.css');
 @import url('./__title/elements__title.css');
-@import url('./__button/elements__button.css');
+@import url('./__like-button/elements__like-button.css');
+@import url('./__delete-button/elements__delete-button.css');
+@import url('./__like-button/_active/elements__like-button_active.css');
 
 .elements {
   max-width: 882px;
