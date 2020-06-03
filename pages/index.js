@@ -13,6 +13,13 @@ const profileName = document.querySelector('.profile__name'); // объявля�
 const profileJob = document.querySelector('.profile__job');  // объявляем переменную "занятия профиля"
 const template = document.querySelector('#template');  // заготовка карточки
 const card = template.content.querySelector('.elements__card');  //
+const bigImage = document.querySelector('#bigImage');
+const popupImage = document.querySelector('.popup__image');
+const imageCaption = document.querySelector('.popup__image-caption');
+const bigImageCloseButton = document.querySelector('#bigImageCloseButton');
+let cardName = document.querySelector('#cardName');   // поле ввода в popup
+let linkPhoto = document.querySelector("#linkPhoto"); // поле ввода в popup
+
 
 const initialCards = [
   {
@@ -56,81 +63,109 @@ function formSubmitEditProfile(evt) {               // обработчик от
   popupClose(popupProfile);
 };
 
-// функция добавления карточки + работа кнопок "лайк" и "удалить" + просмотр картинок
-function addCard(name, link) {
+
+function likePhoto(evt) {                                       // функция лайка фото
+  evt.target.classList.toggle('elements__like-button_active');
+}
+
+function deleteCard(evt) {                                      // функция удаления карточки
+  evt.target.closest('.elements__card').remove();
+}
+
+function viewPhoto(evt) {                                          // функция просмотра фото
+  popupOpen(bigImage);
+
+  popupImage.src = evt.target.src;
+  imageCaption.textContent = evt.target.alt;
+}
+
+function openProfile() {                       // функция открытия редактировая профиля
+  popupOpen(popupProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
+
+// функция добавления карточки
+function createCard(name, link) {
   const newCard = card.cloneNode(true);
   const deleteButton = newCard.querySelector('.elements__delete-button');
 
   newCard.querySelector('.elements__title').textContent = name;       // вставляем название фото
   newCard.querySelector('.elements__image').src = link;              // вставляем фото
   newCard.querySelector('.elements__image').alt = name;
-  newCard.querySelector('.elements__like-button').addEventListener('click', function (evt) {  // функция лайка фотографий
-    evt.target.classList.toggle('elements__like-button_active');
-  })
-
-  deleteButton.addEventListener('click', function () {
-    newCard.remove();
-  })
-
-  elements.prepend(newCard);
-
-  const bigImage = document.querySelector('#bigImage');
-  const bigImageCloseButton = document.querySelector('#bigImageCloseButton');
-
-  // логика просмотра картинок
-  newCard.querySelector('.elements__image').addEventListener('click', function () {
-    popupOpen(bigImage);
-    const popupImage = document.querySelector('.popup__image');
-    const imageCaption = document.querySelector('.popup__image-caption');
-
-    popupImage.src = link;
-    imageCaption.textContent = name;
-
-  });
-
-  // закрываем окно просмотра
-  bigImageCloseButton.addEventListener('click', function () {
-    popupClose(bigImage);
-  });
+  newCard.querySelector('.elements__like-button').addEventListener('click', likePhoto);
+  deleteButton.addEventListener('click', deleteCard);
+  newCard.querySelector('.elements__image').addEventListener('click', viewPhoto);
+  return newCard;
 };
 
-// создаем карточки из массива
-initialCards.forEach(function (item) {
+function cardsFromArray(item) {             // функция обхода массива для создания карточек
   const name = item.name;
   const link = item.link;
-  addCard(name, link);
-});
+  elements.prepend(createCard(name, link));
+}
+
+initialCards.forEach(cardsFromArray);       // вызываем обход массива
+
+// закрываем окно просмотра
+bigImageCloseButton.addEventListener('click', () => popupClose(bigImage));
 
 // открываем редактирование профиля
-profileEditButton.addEventListener('click', function () {
-  popupOpen(popupProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-});
-
-// открываем добавление карточки
-cardAddButton.addEventListener('click', function () {
-  popupOpen(popupAddCard);
-});
+profileEditButton.addEventListener('click', openProfile);
 
 // закрываем редактирования профиля
-profileCloseButton.addEventListener('click', function () {
-  popupClose(popupProfile);
-});
-
-// закрываем добавление карточки
-addCardCloseButton.addEventListener('click', function () {
-  popupClose(popupAddCard);
-});
+profileCloseButton.addEventListener('click', () => popupClose(popupProfile));
 
 // обработка изменения профиля
 formElementProfile.addEventListener('submit', formSubmitEditProfile);
 
-// обработка добавления карточки
-formElementAddCard.addEventListener('submit', function (evt) {
+// открываем добавление карточки
+cardAddButton.addEventListener('click', () => popupOpen(popupAddCard));
+
+// закрываем добавление карточки
+addCardCloseButton.addEventListener('click', () => popupClose(popupAddCard));
+
+function addCard(evt) {
   evt.preventDefault();
-  const cardName = document.querySelector('#cardName').value;   // поле ввода в popup
-  const linkPhoto = document.querySelector("#linkPhoto").value; // поле ввода в popup
-  addCard(cardName, linkPhoto);
+  elements.prepend(createCard(cardName.value, linkPhoto.value));
   popupClose(popupAddCard);
-});
+}
+
+// обработка добавления карточки
+formElementAddCard.addEventListener('submit', addCard);
+
+
+
+
+// // 2 в 1: функции открыть/закрыть
+// function popupOpenClose(popupElement) {
+//   if (!popupElement.classList.contains('popup__opened')) {
+//     popupElement.classList.toggle('popup_opened');
+//   }
+// }
+
+// // открываем редактирование профиля
+// profileEditButton.addEventListener('click', function () {
+//   popupOpenClose(popupProfile);
+//   nameInput.value = profileName.textContent;
+//   jobInput.value = profileJob.textContent;
+// });
+
+//  // закрываем редактирования профиля
+// profileCloseButton.addEventListener('click', function () {
+//   popupOpenClose(popupProfile);
+// });
+
+
+// функция на 2 кнопки сразу
+
+// function buttonOpenClose(openButton, closeButton) {
+//   openButton.addEventListener('click', function() {
+//     popupOpenClose(popupProfile);
+//   })
+//   closeButton.addEventListener('click', function() {
+//     popupOpenClose(popupProfile);
+//   })
+// }
+
+// buttonOpenClose(profileEditButton, profileCloseButton);
