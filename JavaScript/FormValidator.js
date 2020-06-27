@@ -65,4 +65,13 @@ export class FormValidator {
     this._setEventListeners();
   };
 
+  // сброс ошибок
+  cleanErrors() {
+    const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
+    const submitButton = this._formSelector.querySelector(this._submitButtonSelector);
+    this._toggleButtonState(inputList, submitButton);
+    inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
 };

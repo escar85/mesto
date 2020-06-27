@@ -39,8 +39,6 @@ const addCardForm = new FormValidator(validationSettings, formElementAddCard);
  function popupOpen(popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', popupEsc);
-  cardName.value = '';
-  linkPhoto.value = '';
 };
 
 // функция закрытия окна popup
@@ -68,6 +66,7 @@ function openProfile() {
   popupOpen(popupProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  profileForm.cleanErrors();
 }
 
 // функция добавления карточки
@@ -82,7 +81,7 @@ function addCard(evt) {
 // функция закрывает popup надатием на Esc
 function popupEsc(evt) {
   if (evt.key === 'Escape') {
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
+    popupClose(document.querySelector('.popup_opened'));
     document.removeEventListener('keydown', popupEsc);  // снимаем слушатель
   }
 }
@@ -119,7 +118,12 @@ profileCloseButton.addEventListener('click', () => popupClose(popupProfile));
 formElementProfile.addEventListener('submit', formSubmitEditProfile);
 
 // открываем добавление карточки
-cardAddButton.addEventListener('click', () => popupOpen(popupAddCard));
+cardAddButton.addEventListener('click', () => {
+  popupOpen(popupAddCard)
+  cardName.value = '';
+  linkPhoto.value = '';
+  addCardForm.cleanErrors();
+});
 
 // закрываем добавление карточки
 addCardCloseButton.addEventListener('click', () => popupClose(popupAddCard));
@@ -133,3 +137,4 @@ popupCloseByOverlay();
 // запускаем валидацию форм
 profileForm.enableValidation();
 addCardForm.enableValidation();
+
