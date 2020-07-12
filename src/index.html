@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Места России</title>
 </head>
 
@@ -25,7 +24,7 @@
         <p class="profile__job">Исследователь океана</p>
       </div>
     </div>
-    <button type="button" aria-label="add-card" class="profile__add-button"></button>
+    <button type="button" aria-label="add-card" class="profile__card-add-button"></button>
   </section>
 
   <ul class="elements">
@@ -35,41 +34,41 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <section class="popup" id="popupProfile">
+  <section class="popup popup-profile">
     <form name="profile-edit" method="post" action="#" class="popup__container" id="profileForm" novalidate>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <input type="text" name="profile-name-input" required minlength="2" maxlength="40" class="popup__input" id="inputName">
+      <input type="text" name="name" required minlength="2" maxlength="40" class="popup__input" id="inputName">
       <span class="popup__input-error" id="inputName-error"></span>
-      <input type="text" name="job-input" required minlength="2" maxlength="200" class="popup__input" id="inputJob">
+      <input type="text" name="job" required minlength="2" maxlength="200" class="popup__input" id="inputJob">
       <span class="popup__input-error" id="inputJob-error"></span>
       <button type="submit" class="popup__submit-button">Сохранить</button>
       <button type="button" aria-label="close" class="popup__close-button profile-close-button"></button>
     </form>
   </section>
 
-  <section class="popup" id="popupAddCard">
+  <section class="popup popup-add-card">
     <form name="add-card" method="post" action="#" class="popup__container" id="addCardForm" novalidate>
       <h3 class="popup__title">Новое место</h3>
-      <input type="text" name="card-name-input" placeholder="Название" value="" required minlength="1" maxlength="30" class="popup__input" id="cardName">
+      <input type="text" name="name" placeholder="Название" value="" required minlength="1" maxlength="30" class="popup__input" id="cardName">
       <span class="popup__input-error" id="cardName-error"></span>
-      <input type="url" name="image-link-input" placeholder="Ссылка на картинку" value="" required class="popup__input" id="linkPhoto">
+      <input type="url" name="link" placeholder="Ссылка на картинку" value="" required class="popup__input" id="linkPhoto">
       <span class="popup__input-error" id="linkPhoto-error"></span>
       <button type="submit" class="popup__submit-button">Создать</button>
       <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
     </form>
   </section>
 
-  <figure class="popup popup-big-image" id="bigImage">
+  <figure class="popup popup-big-image">
     <div class="popup__image-box">
-      <img src="" alt="" class="popup__image">
+      <img alt="" class="popup__image">
       <figcaption class="popup__image-caption"></figcaption>
-      <button type="button" aria-label="close" class="popup__close-button" id="bigImageCloseButton"></button>
+      <button type="button" aria-label="close" class="popup__close-button"></button>
     </div>
   </figure>
 
   <template class="template" id="template">
     <li class="elements__card">
-      <img src="" alt="" class="elements__image">
+      <img alt="" class="elements__image">
       <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title"></h2>
@@ -77,9 +76,6 @@
       </div>
     </li>
   </template>
-
-  <script type="module" src="./JavaScript/index.js"></script>
-
 </body>
 
 </html>

@@ -1,10 +1,11 @@
 
-export class Card {
-  constructor(name, link, cardSelector, functionViewPhoto) {
-    this._name = name;
-    this._link = link;
+
+export default class Card {
+  constructor(data, cardSelector, handleCardClick) {
+    this._name = data.name;
+    this._link = data.link;
     this._cardSelector = cardSelector;
-    this._viewPhoto = functionViewPhoto;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -21,9 +22,7 @@ export class Card {
       this._deleteCard();
     });
 
-    this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._viewPhoto(this._name, this._link);
-    });
+    this._element.querySelector('.elements__image').addEventListener('click', this._handleCardClick);
   }
 
   _likePhoto() {
