@@ -36,7 +36,9 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.elements__image').src = this._link;
+    const imageElement = this._element.querySelector('.elements__image');
+    imageElement.src = this._link;
+    imageElement.alt = this._name;
     this._element.querySelector('.elements__title').textContent = this._name;
 
     this._setEventListeners();

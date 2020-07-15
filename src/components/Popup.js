@@ -1,49 +1,34 @@
 export default class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
+    this._popupElement = document.querySelector(popupSelector);
+    this._handleClose = this._handleEscClose.bind(this);
   }
 
   open() {
-    document.querySelector(this._popupSelector).classList.add('popup_opened');
-    document.addEventListener('keydown', (evt) => {
-      this._handleEscClose(evt);
-    });
-  }
+    this._popupElement.classList.add('popup_opened');
+    document.addEventListener('keydown', this._handleClose);
+  };
 
   close() {
-    document.querySelector(this._popupSelector).classList.remove('popup_opened');
-  }
+    this._popupElement.classList.remove('popup_opened');
+    document.removeEventListener('keydown', this._handleClose);
+  };
 
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
       this.close();
-      document.removeEventListener('keydown', () => {
-        this._handleEscClose();
-      });
+      document.removeEventListener('keydown', this._handleClose);
     }
-  }
+  };
 
   setEventListeners() {
-    document.querySelector(this._popupSelector).addEventListener('click', (evt) => {
+    this._popupElement.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('popup')) {
-        this.close(); //popupClose(evt.target.closest('.popup'));
+        this.close();
       }
     })
-    document.querySelector(this._popupSelector).querySelector('.popup__close-button').addEventListener('click', () => {
+    this._popupElement.querySelector('.popup__close-button').addEventListener('click', () => {
       this.close();
     })
   }
 }
-
-
-// // функция закрывает popup нажатием на оверлей
-// const popupCloseByOverlay = () => {
-//   const overlays = Array.from(document.querySelectorAll('.popup'));
-//   overlays.forEach((overlay) => {
-//     overlay.addEventListener('click', (evt) => {
-//       if (evt.target.classList.contains('popup')) {
-//       popupClose(evt.target.closest('.popup'));
-//       }
-//     })
-//   });
-// };

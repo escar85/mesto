@@ -1,7 +1,6 @@
 import './index.css';
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { initialCards } from '../components/cardsArray.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -12,7 +11,8 @@ import {
   formElementProfile,
   formElementAddCard,
   nameInput,
-  jobInput
+  jobInput,
+  initialCards
 } from '../utils/constants.js';
 
 // создаем карточки из массива
@@ -20,7 +20,7 @@ const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = new Card(item, '.template', () => {
-      const viewPhoto = new PopupWithImage(item.name, item.link, '.popup-big-image');
+      const viewPhoto = new PopupWithImage(item.name, item.link, '.popup-big-image', '.popup__image', '.popup__image-caption');
       viewPhoto.open();
       viewPhoto.setEventListeners();
     })
@@ -33,12 +33,12 @@ const cardList = new Section({
 
 // открываем форму добавления карточки
 cardAddButton.addEventListener('click', () => {
-  CardForm.open();
+  cardForm.open();
   addCardForm.cleanErrors();
 });
 
 // добавление новой карточки
-const CardForm = new PopupWithForm('.popup-add-card', (item) => {
+const cardForm = new PopupWithForm('.popup-add-card', (item) => {
   const newCard = new Card(item, '.template', () => {
     const viewPhoto = new PopupWithImage(item.name, item.link, '.popup-big-image');
     viewPhoto.open();
@@ -49,22 +49,22 @@ const CardForm = new PopupWithForm('.popup-add-card', (item) => {
 });
 
 // форма пользователя
-const UserForm = new PopupWithForm('.popup-profile', (item) => {
-  User.setUserInfo(item);
+const userForm = new PopupWithForm('.popup-profile', (item) => {
+  user.setUserInfo(item);
 });
 
 // создаем пользователя
-const User = new UserInfo({
+const user = new UserInfo({
   userNameSelector:'.profile__name',
   userJobSelector: '.profile__job'
 });
 
 // открываем форму изменения профиля
 profileEditButton.addEventListener('click', () => {
-  UserForm.open();
+  userForm.open();
   profileForm.cleanErrors();
-  nameInput.value = User.getUserInfo().name;
-  jobInput.value = User.getUserInfo().job;
+  nameInput.value = user.getUserInfo().name;
+  jobInput.value = user.getUserInfo().job;
 });
 
 // объект настроек валидации
@@ -88,5 +88,5 @@ profileForm.enableValidation();
 addCardForm.enableValidation();
 
 // устанавливаем слушатели форм
-CardForm.setEventListeners();
-UserForm.setEventListeners();
+cardForm.setEventListeners();
+userForm.setEventListeners();
