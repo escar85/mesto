@@ -1,4 +1,3 @@
-import { avatar } from "../utils/constants";
 
 export default class Api {
   constructor(options) {
