@@ -15,13 +15,13 @@
 
   <section class="profile">
     <div class="profile__info">
-      <img src="./images/avatar__image.jpg" alt="аватар пользователя" class="profile__avatar">
+      <img alt="аватар пользователя" class="profile__avatar">
       <div class="profile__block">
         <div class="profile__name-area">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button type="button" aria-label="edit-profile" class="profile__edit-button"></button>
         </div>
-        <p class="profile__job">Исследователь океана</p>
+        <p class="profile__job"></p>
       </div>
     </div>
     <button type="button" aria-label="add-card" class="profile__card-add-button"></button>
@@ -39,21 +39,42 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <input type="text" name="name" required minlength="2" maxlength="40" class="popup__input" id="inputName">
       <span class="popup__input-error" id="inputName-error"></span>
-      <input type="text" name="job" required minlength="2" maxlength="200" class="popup__input" id="inputJob">
+      <input type="text" name="about" required minlength="2" maxlength="200" class="popup__input" id="inputJob">
       <span class="popup__input-error" id="inputJob-error"></span>
       <button type="submit" class="popup__submit-button">Сохранить</button>
       <button type="button" aria-label="close" class="popup__close-button profile-close-button"></button>
     </form>
   </section>
 
+  <section class="popup popup-edit-avatar">
+    <form name="edit-avatar" method="post" action="#" class="popup__container" id="editAvatar" novalidate>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <input type="url" name="avatar" placeholder="Ссылка на картинку" value="" required class="popup__input"
+        id="linkAvatar">
+      <span class="popup__input-error" id="linkAvatar-error"></span>
+      <button type="submit" class="popup__submit-button">Сохранить</button>
+      <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
+    </form>
+  </section>
+
   <section class="popup popup-add-card">
     <form name="add-card" method="post" action="#" class="popup__container" id="addCardForm" novalidate>
       <h3 class="popup__title">Новое место</h3>
-      <input type="text" name="name" placeholder="Название" value="" required minlength="1" maxlength="30" class="popup__input" id="cardName">
+      <input type="text" name="name" placeholder="Название" value="" required minlength="1" maxlength="30"
+        class="popup__input" id="cardName">
       <span class="popup__input-error" id="cardName-error"></span>
-      <input type="url" name="link" placeholder="Ссылка на картинку" value="" required class="popup__input" id="linkPhoto">
+      <input type="url" name="link" placeholder="Ссылка на картинку" value="" required class="popup__input"
+        id="linkPhoto">
       <span class="popup__input-error" id="linkPhoto-error"></span>
       <button type="submit" class="popup__submit-button">Создать</button>
+      <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
+    </form>
+  </section>
+
+  <section class="popup popup-delete-card">
+    <form name="delete-card" method="post" action="#" class="popup__container" id="deleteCardForm" novalidate>
+      <h3 class="popup__title">Вы уверены?</h3>
+      <button type="submit" class="popup__submit-button">Да</button>
       <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
     </form>
   </section>
@@ -72,7 +93,10 @@
       <button type="button" aria-label="delete" class="elements__delete-button"></button>
       <div class="elements__info">
         <h2 class="elements__title"></h2>
-        <button type="button" aria-label="like" class="elements__like-button"></button>
+        <div class="elements__like-area">
+          <button type="button" aria-label="like" class="elements__like-button"></button>
+          <span class="elements__like-count"></span>
+        </div>
       </div>
     </li>
   </template>

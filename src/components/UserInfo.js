@@ -1,7 +1,10 @@
+import { avatar } from "../utils/constants";
+
 export default class UserInfo {
-  constructor({userNameSelector, userJobSelector}) {
+  constructor({userNameSelector, userJobSelector, avatarSelector}) {
     this._name = document.querySelector(userNameSelector);
     this._job = document.querySelector(userJobSelector);
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -14,14 +17,10 @@ export default class UserInfo {
 
   setUserInfo(newInfo) {
     this._name.textContent = newInfo.name;
-    this._job.textContent = newInfo.job;
+    this._job.textContent = newInfo.about;
   }
 
-//   setUserInfo(newInfo) {
-//     this._userInfo = {
-//     name: newInfo.name,
-//     job: newInfo.job
-//   }
-//   return this._userInfo;
-// }
+  setAvatar(avatarLink) {
+    this._avatar.src = avatarLink;
+  }
 }
