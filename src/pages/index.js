@@ -35,12 +35,12 @@ const cardList = new Section(
       item,
       '.template',
       () => {
-        const viewPhoto = new PopupWithImage(item.name, item.link, '.popup-big-image', '.popup__image', '.popup__image-caption');
+        const viewPhoto = new PopupWithImage(item.name, item.link, '.popup_big-image', '.popup__image', '.popup__image-caption');
         viewPhoto.open();
         viewPhoto.setEventListeners();
       },
       (evt) => {
-        if (!evt.target.classList.contains('elements__like-button_active')) {
+        if (!evt.target.classList.contains('element__like-button_active')) {
           api.like(item._id)
             .then((res) => {
               evt.target.nextElementSibling.textContent = res.likes.length;
@@ -57,10 +57,13 @@ const cardList = new Section(
               console.log(err);
             })
         }
+      },
+      () => {
+        deleteForm.open(cardElement, item._id);
       });
     const cardElement = card.generateCard();
     card.undeletedCard();
-    cardList.addItem(cardElement);
+    cardList.addItemToEnd(cardElement);
   },
   '.elements'
 );
@@ -154,7 +157,7 @@ const cardForm = new PopupWithForm('.popup-add-card', (item) => {
         },
         // колбэк лайк фото и счетчик лайков
         (evt) => {
-          if (!evt.target.classList.contains('elements__like-button_active')) {
+          if (!evt.target.classList.contains('element__like-button_active')) {
             api.like(item._id)
               .then((res) => {
                 evt.target.nextElementSibling.textContent = res.likes.length;
@@ -177,7 +180,8 @@ const cardForm = new PopupWithForm('.popup-add-card', (item) => {
           deleteForm.open(cardElement, res._id);
         });
       const cardElement = newCard.generateCard();
-      cardList.addItem(cardElement);
+      cardList.addItemToStart(cardElement);
+      newCard.undeletedCard();
     })
     .catch((err) => {
       console.log(err);
@@ -189,9 +193,14 @@ const cardForm = new PopupWithForm('.popup-add-card', (item) => {
 
 // создаем попап для удаления карточки
 const deleteForm = new PopupDeleteCard('.popup-delete-card', (card, id) => {
-  api.deleteCard(id);
-  card.remove();
-  card = null;
+  api.deleteCard(id)
+    .then(() => {
+      card.remove();
+      card = null;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 });
 
 // создаем экземпляры класса FormValidator для каждой формы

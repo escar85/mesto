@@ -38,9 +38,9 @@
     <form name="profile-edit" method="post" action="#" class="popup__container" id="profileForm" novalidate>
       <h3 class="popup__title">Редактировать профиль</h3>
       <input type="text" name="name" required minlength="2" maxlength="40" class="popup__input" id="inputName">
-      <span class="popup__input-error" id="inputName-error"></span>
+      <span class="popup__input_type_error" id="inputName-error"></span>
       <input type="text" name="about" required minlength="2" maxlength="200" class="popup__input" id="inputJob">
-      <span class="popup__input-error" id="inputJob-error"></span>
+      <span class="popup__input_type_error" id="inputJob-error"></span>
       <button type="submit" class="popup__submit-button">Сохранить</button>
       <button type="button" aria-label="close" class="popup__close-button profile-close-button"></button>
     </form>
@@ -51,7 +51,7 @@
       <h3 class="popup__title">Обновить аватар</h3>
       <input type="url" name="avatar" placeholder="Ссылка на картинку" value="" required class="popup__input"
         id="linkAvatar">
-      <span class="popup__input-error" id="linkAvatar-error"></span>
+      <span class="popup__input_type_error" id="linkAvatar-error"></span>
       <button type="submit" class="popup__submit-button">Сохранить</button>
       <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
     </form>
@@ -62,10 +62,10 @@
       <h3 class="popup__title">Новое место</h3>
       <input type="text" name="name" placeholder="Название" value="" required minlength="1" maxlength="30"
         class="popup__input" id="cardName">
-      <span class="popup__input-error" id="cardName-error"></span>
+      <span class="popup__input_type_error" id="cardName-error"></span>
       <input type="url" name="link" placeholder="Ссылка на картинку" value="" required class="popup__input"
         id="linkPhoto">
-      <span class="popup__input-error" id="linkPhoto-error"></span>
+      <span class="popup__input_type_error" id="linkPhoto-error"></span>
       <button type="submit" class="popup__submit-button">Создать</button>
       <button type="button" aria-label="close" class="popup__close-button add-card-close-button"></button>
     </form>
@@ -79,7 +79,7 @@
     </form>
   </section>
 
-  <figure class="popup popup-big-image">
+  <figure class="popup popup_big-image">
     <div class="popup__image-box">
       <img alt="" class="popup__image">
       <figcaption class="popup__image-caption"></figcaption>
@@ -88,14 +88,14 @@
   </figure>
 
   <template class="template" id="template">
-    <li class="elements__card">
-      <img alt="" class="elements__image">
-      <button type="button" aria-label="delete" class="elements__delete-button"></button>
-      <div class="elements__info">
-        <h2 class="elements__title"></h2>
-        <div class="elements__like-area">
-          <button type="button" aria-label="like" class="elements__like-button"></button>
-          <span class="elements__like-count"></span>
+    <li class="element">
+      <img alt="" class="element__image">
+      <button type="button" aria-label="delete" class="element__delete-button element__delete-button_hidden"></button>
+      <div class="element__info">
+        <h2 class="element__title"></h2>
+        <div class="element__like-area">
+          <button type="button" aria-label="like" class="element__like-button"></button>
+          <span class="element__like-count"></span>
         </div>
       </div>
     </li>

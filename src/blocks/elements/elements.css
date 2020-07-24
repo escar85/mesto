@@ -1,12 +1,12 @@
-@import url('./__card/elements__card.css');
-@import url('./__image/elements__image.css');
-@import url('./__info/elements__info.css');
-@import url('./__title/elements__title.css');
-@import url('./__like-button/elements__like-button.css');
-@import url('./__delete-button/elements__delete-button.css');
-@import url('./__like-button/_active/elements__like-button_active.css');
-@import url('./__like-area/elements__like-area.css');
-@import url('./__like-count/elements__like-count.css');
+@import url('../element/element.css');
+@import url('../element/__image/element__image.css');
+@import url('../element/__info/element__info.css');
+@import url('../element/__title/element__title.css');
+@import url('../element/__like-button/element__like-button.css');
+@import url('../element/__delete-button/element__delete-button.css');
+@import url('../element/__like-button/_active/element__like-button_active.css');
+@import url('../element/__like-area/element__like-area.css');
+@import url('../element/__like-count/element__like-count.css');
 
 .elements {
   max-width: 882px;

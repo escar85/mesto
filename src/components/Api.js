@@ -56,6 +56,7 @@ export default class Api {
       })
   }
 
+  // метод добавления карточки
   addCard(cardInfo) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
@@ -102,6 +103,7 @@ export default class Api {
       })
   }
 
+  // метод смены аватара
   setUserAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
@@ -117,6 +119,7 @@ export default class Api {
       })
   }
 
+  // метод удаления карточки
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
@@ -131,3 +134,10 @@ export default class Api {
       })
   }
 }
+
+
+
+
+
+
+// _id: "478d181f5629dafe2d203282"
